@@ -21,7 +21,7 @@ public class AuthenticationController : ApiController
     {
         LoginQuery authQuery = new LoginQuery(request.UserName, request.Password);
 
-        Task<ErrorOr<Domain.AuthenticationResult>> authResult = _mediator.Send(authQuery);
+        var authResult = _mediator.Send(authQuery);
 
         return authResult.Match(
                 result => Ok(authResult),
